@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #343541;
+      color: #FFF;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+    }
+    h1 {
+      color: #FFF;
+    }
+    button:hover {
+      opacity: 0.6;
+    }
+    #buttonContainer {
+      display: flex;
+      align-items: center;
+    }
+    #extensionPairsContainer {
+      margin-bottom: 20px;
+    }
+    #extensionPairsContainer div {
+      margin-bottom: 10px;
+    }
+    #content {
+      display: flex;
+      flex-direction: column;
+      height: 90vh;
+      margin-left: auto;
+      margin-right: auto;
+      width: 67%;
+      background-color: #282832;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    #headerContent, #buttonContainer {
+      flex-shrink: 0;
+    }
+
+    #headerContent {
+      position: relative;
+    }
+
+    #headerContent h1 {
+      flex-basis: 100%;
+    }
+
+    #headerTop {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    #scrollableContainer::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    #scrollableContainer::-webkit-scrollbar-track {
+      background: #282832;
+    }
+
+    #scrollableContainer::-webkit-scrollbar-thumb {
+      background-color: #505096;
+      border-radius: 20px;
+      border: 3px solid #282832;
+    }
+
+    #scrollableContainer {
+      overflow: auto;
+      flex-grow: 1;
+      padding-right: 10px;
+      margin-bottom: 10px;
+    }
+    #defaultButton, .removeButton {
+      min-width: 90px;
+    }
+    .pairContainer {
+      display: flex;
+    }
+    .langInput {
+      flex: 6;
+      margin-right: 10px;
+    }
+    .extInput {
+      flex: 1;
+      min-width: 30px;
+      margin-right: 10px;
+    }
+
+    input[type="text"] {
+      border: 1px solid #444;
+      background-color: #444654;
+      color: #FFF;
+      margin-right: 10px;
+      border-radius: 3px;
+    }
+    input[type="text"]::placeholder {
+      color: #777;
+    }
+
+    input, button {
+    margin: 0;
+    padding: 0;
+    border: none;
+    padding: 6px;
+    line-height: 18px;
+    }
+
+    button {
+      background-color: #505096;
+      min-width: 90px;
+      min-height: 20px;
+      border: none;
+      color: white;
+      padding: 0px 0px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 14px;
+      height: 31px;
+      margin: 0px 0px;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+
+    #addPairButton {
+      margin-right: 10px;
+    }
+
+    #saveButton {
+      margin-right: 10px;
+    }
+    ol li {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    #info {
+      position: absolute;
+      top: 0px;
+      right: 10px;
+      color: #aaaaaa;
+      font-size: 12px;
+      order: -1
+    }
+
+    #info a {
+      color: #aaaaaa;
+      text-decoration: none;
+    }
+
+    #info a:hover {
+      text-decoration: underline;
+      color: #FFF;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="content">  
+    <div id="headerContent">
+      <div id="headerTop">
+        <div id="info">
+          v1.0 by Eric Damon Stahl: <a href="https://github.com/EDamonStahl/Save-code-button-for-ChatGPT" target="_blank">GitHub</a>
+        </div>
+        <h1>'Save code' button for ChatGPT</h1>
+      </div>
+      <p>Adds a seamless 'Save code' button next to the 'Copy code' button within every ChatGPT code box. Many file extensions are recognized automatically. If any are missing for your use case, just add/edit them below.</p>
+      <p>
+        <strong>How to use:</strong><br/>
+        <ol>
+          <li><em>Add pair</em>: Add a new extension pair. Fill in the code language as shown in the ChatGPT code box and its corresponding file extension.</li>
+          <li><em>Remove</em>: Remove a pair.</li>
+          <li><em>Save</em>: Save your changes. Changes should be immediate even on already opened ChatGPT tabs.</li>
+          <li><em>Defaults</em>: Reset the language-extension pairs to the defaults. First click 'Defaults', then 'Save'.</li>
+        </ol>
+      </p>
+      <p>For example, if you want the plugin to recognize "javascript" files with ".js" extension, type "javascript" in the programming language box and ".js" in the extension box, then click Save. 
+        You can add multiple pairs with the same extension if needed.
+      </p>
+    </div>
+
+    <div id="scrollableContainer">
+      <div id="extensionPairsContainer">
+        <!-- Pair containers will be added here -->
+      </div>
+    </div>
+
+    <div id="buttonContainer">
+      <button type="button" id="addPairButton">Add pair</button>
+      <button type="button" id="saveButton">Save</button>
+      <button type="button" id="defaultButton">Defaults</button>
+    </div>
+  </div>
+  <script src="options.js"></script>
+</body>
+</html>
